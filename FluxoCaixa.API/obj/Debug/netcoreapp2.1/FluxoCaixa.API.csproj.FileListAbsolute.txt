@@ -1,0 +1,16 @@
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.API.deps.json
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.API.runtimeconfig.json
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.API.runtimeconfig.dev.json
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.API.dll
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.API.pdb
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.csprojAssemblyReference.cache
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.RazorAssemblyInfo.cache
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.RazorAssemblyInfo.cs
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.AssemblyInfoInputs.cache
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.AssemblyInfo.cs
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.RazorTargetAssemblyInfo.cache
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.dll
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.pdb
