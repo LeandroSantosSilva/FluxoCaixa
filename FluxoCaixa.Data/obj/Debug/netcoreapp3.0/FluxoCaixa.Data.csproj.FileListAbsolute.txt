@@ -9,8 +9,8 @@ C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\FluxoCaixa.Data\obj\Deb
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\bin\Debug\netcoreapp3.0\FluxoCaixa.Data.deps.json
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\bin\Debug\netcoreapp3.0\FluxoCaixa.Data.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\bin\Debug\netcoreapp3.0\FluxoCaixa.Data.pdb
-C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\obj\Debug\netcoreapp3.0\FluxoCaixa.Data.csprojAssemblyReference.cache
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\obj\Debug\netcoreapp3.0\FluxoCaixa.Data.AssemblyInfoInputs.cache
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\obj\Debug\netcoreapp3.0\FluxoCaixa.Data.AssemblyInfo.cs
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\obj\Debug\netcoreapp3.0\FluxoCaixa.Data.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\obj\Debug\netcoreapp3.0\FluxoCaixa.Data.pdb
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Data\obj\Debug\netcoreapp3.0\FluxoCaixa.Data.csprojAssemblyReference.cache

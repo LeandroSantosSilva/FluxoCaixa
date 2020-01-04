@@ -42,7 +42,6 @@ C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\bin\Debug\netcoreapp2.1\
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\bin\Debug\netcoreapp2.1\FluxoCaixa.Web.pdb
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\bin\Debug\netcoreapp2.1\FluxoCaixa.Web.Views.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\bin\Debug\netcoreapp2.1\FluxoCaixa.Web.Views.pdb
-C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\FluxoCaixa.Web.csprojAssemblyReference.cache
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\FluxoCaixa.Web.RazorAssemblyInfo.cache
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\FluxoCaixa.Web.RazorAssemblyInfo.cs
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\FluxoCaixa.Web.AssemblyInfoInputs.cache

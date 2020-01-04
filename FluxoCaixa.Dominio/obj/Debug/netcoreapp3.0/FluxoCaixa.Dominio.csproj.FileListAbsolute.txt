@@ -9,7 +9,6 @@ C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Dominio\FluxoCaixa.Dominio\o
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Dominio\bin\Debug\netcoreapp3.0\FluxoCaixa.Dominio.deps.json
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Dominio\bin\Debug\netcoreapp3.0\FluxoCaixa.Dominio.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Dominio\bin\Debug\netcoreapp3.0\FluxoCaixa.Dominio.pdb
-C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Dominio\obj\Debug\netcoreapp3.0\FluxoCaixa.Dominio.csprojAssemblyReference.cache
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Dominio\obj\Debug\netcoreapp3.0\FluxoCaixa.Dominio.AssemblyInfoInputs.cache
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Dominio\obj\Debug\netcoreapp3.0\FluxoCaixa.Dominio.AssemblyInfo.cs
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Dominio\obj\Debug\netcoreapp3.0\FluxoCaixa.Dominio.dll

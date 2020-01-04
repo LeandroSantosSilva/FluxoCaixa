@@ -4333,6 +4333,39 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "FluxoCaixa.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/FluxoCaixa.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FluxoCaixa.Common.dll": {}
+        }
+      },
+      "FluxoCaixa.Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/FluxoCaixa.Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FluxoCaixa.Dominio.dll": {}
+        }
+      },
+      "FluxoCaixa.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "FluxoCaixa.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FluxoCaixa.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FluxoCaixa.Services.dll": {}
+        }
       }
     }
   },
@@ -11789,10 +11822,27 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "FluxoCaixa.Common/1.0.0": {
+      "type": "project",
+      "path": "../FluxoCaixa.Common/FluxoCaixa.Common.csproj",
+      "msbuildProject": "../FluxoCaixa.Common/FluxoCaixa.Common.csproj"
+    },
+    "FluxoCaixa.Dominio/1.0.0": {
+      "type": "project",
+      "path": "../FluxoCaixa.Dominio/FluxoCaixa.Dominio.csproj",
+      "msbuildProject": "../FluxoCaixa.Dominio/FluxoCaixa.Dominio.csproj"
+    },
+    "FluxoCaixa.Services/1.0.0": {
+      "type": "project",
+      "path": "../FluxoCaixa.Services/FluxoCaixa.Services.csproj",
+      "msbuildProject": "../FluxoCaixa.Services/FluxoCaixa.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "FluxoCaixa.Common >= 1.0.0",
+      "FluxoCaixa.Services >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0"
@@ -11827,7 +11877,14 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Common\\FluxoCaixa.Common.csproj": {
+              "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Common\\FluxoCaixa.Common.csproj"
+            },
+            "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Services\\FluxoCaixa.Services.csproj": {
+              "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Services\\FluxoCaixa.Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
