@@ -19,9 +19,8 @@ namespace FluxoCaixa.Dominio.Entidades
             Consolidado = false; 
         }
 
-        public bool EntidadeValida()
-        {
-            return Valor == 0 || TipoLancamento == null;
-        }
+        public bool ValidarPermiteEdicaoOuExclusao() => Consolidado;
+
+        public bool EntidadeValida() => Valor == 0 || TipoLancamento == null;
     }
 }

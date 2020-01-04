@@ -1,8 +1,8 @@
 ﻿using FluxoCaixa.Data.Interface;
-using FluxoCaixa.Data.Repositorio;
 using FluxoCaixa.Dominio.Entidades;
 using FluxoCaixa.Services.Interface;
 using System;
+using System.Collections.Generic;
 
 namespace FluxoCaixa.Services
 {
@@ -15,17 +15,36 @@ namespace FluxoCaixa.Services
             _lancamentoRepositorio = lancamentoRepositorio;
         }
 
-        public void InserirLancamento(LancamentoFinanceiro lancamento)
+        public void AtualizarLancamento(LancamentoFinanceiro lancamentoFinanceiro)
         {
-            if (lancamento.EntidadeValida())
-                throw new Exception("Os dados de lançamentos estão inválidos, o campo valor, tipo  e tipo lançamento são obrigatórios, por favor entre em contato com administrador");
+            if(lancamentoFinanceiro.ValidarPermiteEdicaoOuExclusao())
+                throw new Exception("O lançamento informado já foi consolidado não é permitido atualizar, por favor entre em contato com administrador");
 
-            if (!_lancamentoRepositorio.ExisteTipoLancamento(lancamento.TipoLancamento.Id))
+            if (lancamentoFinanceiro.EntidadeValida())
+                throw new Exception("Os dados de lançamentos estão inválidos o campo valor e tipo lançamento são obrigatórios, por favor entre em contato com administrador");
+
+            if (!_lancamentoRepositorio.ExisteTipoLancamento(lancamentoFinanceiro.TipoLancamento.Id))
                 throw new Exception("O tipo de lançamento enviado não está cadastrado, por favor entre em contato com administrador");
 
-            lancamento.SetarValoresPadraoInserir();
+            _lancamentoRepositorio.Atualizar(lancamentoFinanceiro);
+        }
 
-            _lancamentoRepositorio.Inserir(lancamento);
+        public List<LancamentoFinanceiro> BuscarLancamentoFinanceiro(DateTime? dataLancamento, int? tipoLancamento, bool? consolidado)
+        {
+            return _lancamentoRepositorio.Buscar(dataLancamento, tipoLancamento, consolidado);
+        }
+
+        public void InserirLancamento(LancamentoFinanceiro lancamentoFinanceiro)
+        {
+            if (lancamentoFinanceiro.EntidadeValida())
+                throw new Exception("Os dados de lançamentos estão inválidos o campo valor e tipo lançamento são obrigatórios, por favor entre em contato com administrador");
+
+            if (!_lancamentoRepositorio.ExisteTipoLancamento(lancamentoFinanceiro.TipoLancamento.Id))
+                throw new Exception("O tipo de lançamento enviado não está cadastrado, por favor entre em contato com administrador");
+
+            lancamentoFinanceiro.SetarValoresPadraoInserir();
+
+            _lancamentoRepositorio.Inserir(lancamentoFinanceiro);
         }
     }
 }

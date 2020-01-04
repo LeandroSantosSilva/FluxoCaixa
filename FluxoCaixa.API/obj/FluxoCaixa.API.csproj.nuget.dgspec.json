@@ -71,6 +71,10 @@
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.1.10, )"
             }
           },
           "imports": [
@@ -112,7 +116,11 @@
         },
         "frameworks": {
           "netcoreapp2.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Dominio\\FluxoCaixa.Dominio.csproj": {
+                "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Dominio\\FluxoCaixa.Dominio.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
