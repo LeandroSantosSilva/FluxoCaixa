@@ -1122,7 +1122,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Razor.Design/2.1.2": {
+      "Microsoft.AspNetCore.Razor.Design/2.1.1": {
         "type": "package",
         "build": {
           "build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.props": {}
@@ -4344,6 +4344,22 @@
           "bin/placeholder/FluxoCaixa.Common.dll": {}
         }
       },
+      "FluxoCaixa.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "FluxoCaixa.Dominio": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.1.1",
+          "Microsoft.EntityFrameworkCore.Design": "2.1.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.1.1"
+        },
+        "compile": {
+          "bin/placeholder/FluxoCaixa.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FluxoCaixa.Data.dll": {}
+        }
+      },
       "FluxoCaixa.Dominio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
@@ -4358,6 +4374,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
+          "FluxoCaixa.Data": "1.0.0",
           "FluxoCaixa.Dominio": "1.0.0"
         },
         "compile": {
@@ -5270,10 +5287,10 @@
         "microsoft.aspnetcore.razor.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Razor.Design/2.1.2": {
-      "sha512": "fe1+dpy+eM4IX1zodsvkihO1Spuj0NecfStWzvkYoMo7/ziOsqSv4vFK36ZpBfHa4gpdCEwaU46EPzdq+ZDYhQ==",
+    "Microsoft.AspNetCore.Razor.Design/2.1.1": {
+      "sha512": "1XHObHLx6A0/57ZmLG9gfKMO/Z/gQjRXPFWQDMlPZGYwcfgufvSdmI2+RYvR5DGkbba9HIHC35ClNQ2yVNIohw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.razor.design/2.1.2",
+      "path": "microsoft.aspnetcore.razor.design/2.1.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -5281,7 +5298,7 @@
         "build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.CodeGeneration.targets",
         "build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.props",
         "buildMultiTargeting/Microsoft.AspNetCore.Razor.Design.props",
-        "microsoft.aspnetcore.razor.design.2.1.2.nupkg.sha512",
+        "microsoft.aspnetcore.razor.design.2.1.1.nupkg.sha512",
         "microsoft.aspnetcore.razor.design.nuspec",
         "tasks/net46/Microsoft.AspNetCore.Razor.Tasks.dll",
         "tasks/netstandard2.0/Microsoft.AspNetCore.Razor.Tasks.dll",
@@ -11828,6 +11845,11 @@
       "path": "../FluxoCaixa.Common/FluxoCaixa.Common.csproj",
       "msbuildProject": "../FluxoCaixa.Common/FluxoCaixa.Common.csproj"
     },
+    "FluxoCaixa.Data/1.0.0": {
+      "type": "project",
+      "path": "../FluxoCaixa.Data/FluxoCaixa.Data.csproj",
+      "msbuildProject": "../FluxoCaixa.Data/FluxoCaixa.Data.csproj"
+    },
     "FluxoCaixa.Dominio/1.0.0": {
       "type": "project",
       "path": "../FluxoCaixa.Dominio/FluxoCaixa.Dominio.csproj",
@@ -11842,9 +11864,11 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "FluxoCaixa.Common >= 1.0.0",
+      "FluxoCaixa.Data >= 1.0.0",
       "FluxoCaixa.Services >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
-      "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
+      "Microsoft.AspNetCore.Razor.Design >= 2.1.1",
+      "Microsoft.EntityFrameworkCore >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0"
     ]
   },
@@ -11881,6 +11905,9 @@
             "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Common\\FluxoCaixa.Common.csproj": {
               "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Common\\FluxoCaixa.Common.csproj"
             },
+            "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Data\\FluxoCaixa.Data.csproj": {
+              "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Data\\FluxoCaixa.Data.csproj"
+            },
             "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Services\\FluxoCaixa.Services.csproj": {
               "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Services\\FluxoCaixa.Services.csproj"
             }
@@ -11905,7 +11932,11 @@
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.1.2, )"
+            "version": "[2.1.1, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[2.1.1, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",

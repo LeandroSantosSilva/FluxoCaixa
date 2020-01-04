@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-//using FluxoCaixa.Data;
-//using FluxoCaixa.IOC;
+﻿using FluxoCaixa.Data;
+using FluxoCaixa.Data.Interface;
+using FluxoCaixa.Data.Repositorio;
 using FluxoCaixa.Services;
 using FluxoCaixa.Services.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace FluxoCaixa.API
 {
@@ -33,10 +28,11 @@ namespace FluxoCaixa.API
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            //services.AddEntityFrameworkSqlServer()
-            //    .AddDbContext<FluxoCaixaContext>(o => o.UseSqlServer(connectionString));
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<FluxoCaixaContext>(o => o.UseSqlServer(connectionString));
 
-            services.AddSingleton<ILancamentoServices, LancamentoServices>();
+            services.AddScoped<ILancamentoServices, LancamentoServices>();
+            services.AddScoped<ILancamentoRepositorio, LancamentoRepositorio>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

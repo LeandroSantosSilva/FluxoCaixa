@@ -1,20 +1,21 @@
-﻿using System;
+﻿using FluxoCaixa.Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using FluxoCaixa.Dominio.Entidades;
-using Microsoft.EntityFrameworkCore;
 
 namespace FluxoCaixa.Data.Configuration
 {
-    public class LancamentoFinanceiroConfiguration
+    public class LancamentoFinanceiroConfiguration : IEntityTypeConfiguration<LancamentoFinanceiro>
     {
-        public static void Configurar(ModelBuilder modelBuilder)
+        public void Configure(EntityTypeBuilder<LancamentoFinanceiro> builder)
         {
-            modelBuilder.Entity<LancamentoFinanceiro>(tbl =>
-            {
-                tbl.ToTable("LancamentoFinanceiro");
-                
-            });
+            builder.ToTable("LancamentoFinanceiro").HasKey(p => p.Id);
+            builder.Property(p => p.DataHoraLancamento).IsRequired();
+            builder.Property(p => p.Valor).IsRequired();
+            builder.Property(p => p.Consolidado).IsRequired();
+            builder.HasOne(p => p.TipoLancamento).WithMany(p => p.LancamentoFinanceiro);
         }
     }
 }

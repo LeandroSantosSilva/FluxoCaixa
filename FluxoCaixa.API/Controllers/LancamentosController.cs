@@ -26,11 +26,10 @@ namespace FluxoCaixa.API.Controllers
         {
             //TODO: Incluir automapper
             _lancamentoServices.InserirLancamento(new Dominio.Entidades.LancamentoFinanceiro()
-                                            {
-                                                StatusLancamento = new Dominio.Entidades.StatusLancamento() { Id = (int)model.StatusLancamento},
-                                                TipoLancamento = new Dominio.Entidades.TipoLancamento() { Id = (int)model.TipoLancamento },
-                                                Valor = model.Valor
-                                            });
+            {
+                TipoLancamento = new Dominio.Entidades.TipoLancamento() { Id = (int)model.TipoLancamento },
+                Valor = model.Valor
+            });
         }
 
 

@@ -7,9 +7,11 @@ C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.API.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.API.pdb
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.Common.dll
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.Data.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.Dominio.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.Services.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.Common.pdb
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.Data.pdb
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.Services.pdb
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\bin\Debug\netcoreapp2.1\FluxoCaixa.Dominio.pdb
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API\obj\Debug\netcoreapp2.1\FluxoCaixa.API.csprojAssemblyReference.cache

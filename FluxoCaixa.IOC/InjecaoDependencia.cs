@@ -1,4 +1,6 @@
-﻿using FluxoCaixa.Services;
+﻿using FluxoCaixa.Data.Interface;
+using FluxoCaixa.Data.Repositorio;
+using FluxoCaixa.Services;
 using FluxoCaixa.Services.Interface;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,7 +10,8 @@ namespace FluxoCaixa.IOC
     {
         public void Configurar(IServiceCollection services)
         {
-            services.AddSingleton<ILancamentoServices, LancamentoServices>();
+            services.AddScoped<ILancamentoServices, LancamentoServices>();
+            services.AddScoped<ILancamentoRepositorio, LancamentoRepositorio>();
         }
     }
 }
