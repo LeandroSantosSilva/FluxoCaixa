@@ -65,3 +65,4 @@ C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\FluxoCaixa.Web.dll
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\FluxoCaixa.Web.pdb
 C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\FluxoCaixa.Web.csproj.CopyComplete
+C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.Web\obj\Debug\netcoreapp2.1\FluxoCaixa.Web.csprojAssemblyReference.cache

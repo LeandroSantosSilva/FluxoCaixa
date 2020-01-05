@@ -1,4 +1,5 @@
-﻿using FluxoCaixa.Data.Interface;
+﻿using FluxoCaixa.Common.Constantes;
+using FluxoCaixa.Data.Interface;
 using FluxoCaixa.Dominio.Entidades;
 using FluxoCaixa.Services.Interface;
 using System;
@@ -17,14 +18,17 @@ namespace FluxoCaixa.Services
 
         public void AtualizarLancamento(LancamentoFinanceiro lancamentoFinanceiro)
         {
-            if(lancamentoFinanceiro.ValidarPermiteEdicaoOuExclusao())
-                throw new Exception("O lançamento informado já foi consolidado não é permitido atualizar, por favor entre em contato com administrador");
-
             if (lancamentoFinanceiro.EntidadeValida())
-                throw new Exception("Os dados de lançamentos estão inválidos o campo valor e tipo lançamento são obrigatórios, por favor entre em contato com administrador");
+                throw new Exception(Mensagens.MENSAGEM_CAMPOS_OBRIGATORIOS_LANCAMENTO);
+
+            if (_lancamentoRepositorio.ValidarLancamentoExiste(lancamentoFinanceiro.Id))
+                throw new Exception(string.Format(Mensagens.MENSAGEM_LANCAMENTO_NAO_ENCONTRADO, lancamentoFinanceiro.Id));
+
+            if (_lancamentoRepositorio.ValidarLancamentoConsolidado(lancamentoFinanceiro.Id))
+                throw new Exception(Mensagens.MENSAGEM_NAO_PERMITIDO_ALTERAR_LANCAMENTO);
 
             if (!_lancamentoRepositorio.ExisteTipoLancamento(lancamentoFinanceiro.TipoLancamento.Id))
-                throw new Exception("O tipo de lançamento enviado não está cadastrado, por favor entre em contato com administrador");
+                throw new Exception(Mensagens.MENSAGEM_NAO_EXISTE_TIPO_LANCAMENTO_CADASTRADRO);
 
             _lancamentoRepositorio.Atualizar(lancamentoFinanceiro);
         }
@@ -36,16 +40,22 @@ namespace FluxoCaixa.Services
 
         public void ExcluirLancamentoFinanceiro(int id)
         {
+            if (!_lancamentoRepositorio.ValidarLancamentoExiste(id))
+                throw new Exception(string.Format(Mensagens.MENSAGEM_LANCAMENTO_NAO_ENCONTRADO, id));
+
+            if (_lancamentoRepositorio.ValidarLancamentoConsolidado(id))
+                throw new Exception(Mensagens.MENSAGEM_NAO_PERMITIDO_EXCLUIR_LANCAMENTO);
+
             _lancamentoRepositorio.Excluir(id);
         }
 
         public void InserirLancamento(LancamentoFinanceiro lancamentoFinanceiro)
         {
             if (lancamentoFinanceiro.EntidadeValida())
-                throw new Exception("Os dados de lançamentos estão inválidos o campo valor e tipo lançamento são obrigatórios, por favor entre em contato com administrador");
+                throw new Exception(Mensagens.MENSAGEM_CAMPOS_OBRIGATORIOS_LANCAMENTO);
 
             if (!_lancamentoRepositorio.ExisteTipoLancamento(lancamentoFinanceiro.TipoLancamento.Id))
-                throw new Exception("O tipo de lançamento enviado não está cadastrado, por favor entre em contato com administrador");
+                throw new Exception(Mensagens.MENSAGEM_NAO_EXISTE_TIPO_LANCAMENTO_CADASTRADRO);
 
             lancamentoFinanceiro.SetarValoresPadraoInserir();
 

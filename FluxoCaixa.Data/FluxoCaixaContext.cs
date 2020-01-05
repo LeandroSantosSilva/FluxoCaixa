@@ -10,7 +10,7 @@ namespace FluxoCaixa.Data
         { 
         }
 
-        public DbSet<LancamentoFinanceiro> LancamentosFinanceiro { get; set; }
+        public virtual DbSet<LancamentoFinanceiro> LancamentosFinanceiro { get; set; }
         public DbSet<TipoLancamento> TiposLancamento { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)

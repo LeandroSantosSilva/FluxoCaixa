@@ -11,5 +11,7 @@ namespace FluxoCaixa.Data.Interface
         List<LancamentoFinanceiro> Buscar(DateTime? dataLancamento, int? tipoLancamento, bool? consolidado);
         bool ExisteTipoLancamento(int id);
         void Excluir(int id);
+        bool ValidarLancamentoExiste(long id);
+        bool ValidarLancamentoConsolidado(long id);
     }
 }

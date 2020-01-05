@@ -1,5 +1,4 @@
-﻿using FluxoCaixa.Common.Constantes;
-using FluxoCaixa.Data.Interface;
+﻿using FluxoCaixa.Data.Interface;
 using FluxoCaixa.Dominio.Entidades;
 using System;
 using System.Collections.Generic;
@@ -19,12 +18,6 @@ namespace FluxoCaixa.Data.Repositorio
         public void Atualizar(LancamentoFinanceiro lancamentoFinanceiro)
         {
             var lancamento = _fluxoCaixaContext.LancamentosFinanceiro.FirstOrDefault(_ => _.Id == lancamentoFinanceiro.Id);
-
-            if (lancamento == null)
-                throw new Exception(string.Format(Mensagens.MENSAGEM_LANCAMENTO_NAO_ENCONTRADO, lancamentoFinanceiro.Id));
-
-            if (lancamento.Consolidado)
-                throw new Exception(Mensagens.MENSAGEM_NAO_PERMITIDO_ALTERAR_LANCAMENTO);
 
             var tipoLancamento = _fluxoCaixaContext.TiposLancamento.FirstOrDefault(_ => _.Id == lancamentoFinanceiro.TipoLancamento.Id);
 
@@ -48,12 +41,6 @@ namespace FluxoCaixa.Data.Repositorio
         {
             var lancamento = _fluxoCaixaContext.LancamentosFinanceiro.FirstOrDefault(_ => _.Id == id);
 
-            if (lancamento == null)
-                throw new Exception(string.Format(Mensagens.MENSAGEM_LANCAMENTO_NAO_ENCONTRADO, id));
-
-            if (lancamento.Consolidado)
-                throw new Exception(Mensagens.MENSAGEM_NAO_PERMITIDO_EXCLUIR_LANCAMENTO);
-
             _fluxoCaixaContext.LancamentosFinanceiro.Remove(lancamento);
 
             _fluxoCaixaContext.SaveChanges();
@@ -71,5 +58,12 @@ namespace FluxoCaixa.Data.Repositorio
         }
 
         public bool ExisteTipoLancamento(int id) => _fluxoCaixaContext.TiposLancamento.Any(_ => _.Id == id);
+
+        public bool ValidarLancamentoExiste(long id) =>
+            _fluxoCaixaContext.LancamentosFinanceiro.FirstOrDefault(_ => _.Id == id) == null;
+
+        public bool ValidarLancamentoConsolidado(long id) =>
+            _fluxoCaixaContext.LancamentosFinanceiro.FirstOrDefault(_ => _.Id == id).Consolidado;
+
     }
 }
