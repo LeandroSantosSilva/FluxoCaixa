@@ -1,4 +1,5 @@
-﻿using FluxoCaixa.Common.Models;
+﻿using AutoMapper;
+using FluxoCaixa.Common.Models;
 using FluxoCaixa.Dominio.Entidades;
 using FluxoCaixa.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
@@ -13,31 +14,38 @@ namespace FluxoCaixa.API.Controllers
     public class LancamentosController : ControllerBase
     {
         private readonly ILancamentoServices _lancamentoServices;
+        private readonly IMapper _mapper;
 
-        public LancamentosController(ILancamentoServices lancamentoServices)
+        public LancamentosController(ILancamentoServices lancamentoServices, IMapper mapper)
         {
             _lancamentoServices = lancamentoServices;
+            _mapper = mapper;
         }
 
         [HttpPost]
         public void InserirLancamentoFinanceiro([FromBody] LancamentoFinanceiroApiModel model)
         {
-            _lancamentoServices.InserirLancamento(new LancamentoFinanceiro()
+            try
             {
-                Valor = model.Valor,
-                TipoLancamento = new TipoLancamento() { Id = (int)model.TipoLancamento }
-            });
+                _lancamentoServices.InserirLancamento(_mapper.Map<LancamentoFinanceiroApiModel, LancamentoFinanceiro>(model));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpPut]
         public void AtualizarLancamentoFinanceiro([FromBody] LancamentoFinanceiroApiUpdateModel model)
         {
-            _lancamentoServices.AtualizarLancamento(new LancamentoFinanceiro()
+            try
             {
-                Id = model.Id,
-                Valor = model.Valor,
-                TipoLancamento = new TipoLancamento() { Id = (int)model.TipoLancamento }
-            });
+                _lancamentoServices.AtualizarLancamento(_mapper.Map<LancamentoFinanceiroApiUpdateModel, LancamentoFinanceiro>(model));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
