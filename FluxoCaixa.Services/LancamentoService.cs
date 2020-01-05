@@ -34,6 +34,11 @@ namespace FluxoCaixa.Services
             return _lancamentoRepositorio.Buscar(dataLancamento, tipoLancamento, consolidado);
         }
 
+        public void ExcluirLancamentoFinanceiro(int id)
+        {
+            _lancamentoRepositorio.Excluir(id);
+        }
+
         public void InserirLancamento(LancamentoFinanceiro lancamentoFinanceiro)
         {
             if (lancamentoFinanceiro.EntidadeValida())

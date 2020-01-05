@@ -10,5 +10,6 @@ namespace FluxoCaixa.Data.Interface
         void Atualizar(LancamentoFinanceiro lancamentoFinanceiro);
         List<LancamentoFinanceiro> Buscar(DateTime? dataLancamento, int? tipoLancamento, bool? consolidado);
         bool ExisteTipoLancamento(int id);
+        void Excluir(int id);
     }
 }

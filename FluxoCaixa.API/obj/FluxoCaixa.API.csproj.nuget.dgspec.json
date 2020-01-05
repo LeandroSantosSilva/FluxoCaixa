@@ -179,6 +179,9 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
+              "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Common\\FluxoCaixa.Common.csproj": {
+                "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Common\\FluxoCaixa.Common.csproj"
+              },
               "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Dominio\\FluxoCaixa.Dominio.csproj": {
                 "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Dominio\\FluxoCaixa.Dominio.csproj"
               }

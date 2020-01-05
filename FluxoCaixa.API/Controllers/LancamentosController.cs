@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using FluxoCaixa.Common.Models;
+﻿using FluxoCaixa.Common.Models;
 using FluxoCaixa.Dominio.Entidades;
 using FluxoCaixa.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
-
+using System;
+using System.Linq;
+using System.Net;
 
 namespace FluxoCaixa.API.Controllers
 {
@@ -44,47 +41,35 @@ namespace FluxoCaixa.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult FiltrarLancamentoFinanceiro([FromBody] LancamentoFinanceiroFiltro model)
+        public ActionResult FiltrarLancamentoFinanceiro([FromQuery] LancamentoFinanceiroFiltro model)
         {
-            var listaLancamentos = _lancamentoServices.BuscarLancamentoFinanceiro(model.DataLancamento, model.TipoLancamento, model.Consolidado);
+            try
+            {
+                var listaLancamentos = _lancamentoServices.BuscarLancamentoFinanceiro(model.DataLancamento, model.TipoLancamento, model.Consolidado);
 
-            return Ok(listaLancamentos);
+                if (listaLancamentos.Any())
+                    return NotFound();
+
+                return Ok(listaLancamentos);
+            }
+            catch (Exception)
+            {
+                return new StatusCodeResult((int)HttpStatusCode.InternalServerError);
+            }
         }
 
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            try
+            {
+                _lancamentoServices.ExcluirLancamentoFinanceiro(id);
+            }
+            catch (Exception)
+            {
 
-
-
-        //// GET api/values
-        //[HttpGet]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET api/values/5
-        //[HttpGet("{id}")]
-        //public ActionResult<string> Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        //// POST api/values
-        //[HttpPost]
-        //public void Post([FromBody] LancamentoFinanceiroModel model)
-        //{
-
-        //}
-
-        //// PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/values/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+                throw;
+            }
+        }
     }
 }

@@ -946,6 +946,19 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
+      "FluxoCaixa.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "FluxoCaixa.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FluxoCaixa.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FluxoCaixa.Common.dll": {}
+        }
+      },
       "FluxoCaixa.Dominio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
@@ -3616,6 +3629,11 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "FluxoCaixa.Common/1.0.0": {
+      "type": "project",
+      "path": "../FluxoCaixa.Common/FluxoCaixa.Common.csproj",
+      "msbuildProject": "../FluxoCaixa.Common/FluxoCaixa.Common.csproj"
+    },
     "FluxoCaixa.Dominio/1.0.0": {
       "type": "project",
       "path": "../FluxoCaixa.Dominio/FluxoCaixa.Dominio.csproj",
@@ -3624,6 +3642,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "FluxoCaixa.Common >= 1.0.0",
       "FluxoCaixa.Dominio >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 2.1.1",
       "Microsoft.EntityFrameworkCore.Design >= 2.1.1",
@@ -3662,6 +3681,9 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
+            "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Common\\FluxoCaixa.Common.csproj": {
+              "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Common\\FluxoCaixa.Common.csproj"
+            },
             "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Dominio\\FluxoCaixa.Dominio.csproj": {
               "projectPath": "C:\\Users\\Leandro\\source\\repos\\FluxoCaixa\\FluxoCaixa.Dominio\\FluxoCaixa.Dominio.csproj"
             }
