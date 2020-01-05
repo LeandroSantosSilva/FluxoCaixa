@@ -11,7 +11,7 @@ namespace FluxoCaixa.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LancamentosController : ControllerBase
+    public class LancamentosController : FluxcoCaixaControllerBase
     {
         private readonly ILancamentoServices _lancamentoServices;
         private readonly IMapper _mapper;
@@ -23,28 +23,32 @@ namespace FluxoCaixa.API.Controllers
         }
 
         [HttpPost]
-        public void InserirLancamentoFinanceiro([FromBody] LancamentoFinanceiroApiModel model)
+        public ActionResult InserirLancamentoFinanceiro([FromBody] LancamentoFinanceiroApiModel model)
         {
             try
             {
                 _lancamentoServices.InserirLancamento(_mapper.Map<LancamentoFinanceiroApiModel, LancamentoFinanceiro>(model));
+                
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return Result(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
         [HttpPut]
-        public void AtualizarLancamentoFinanceiro([FromBody] LancamentoFinanceiroApiUpdateModel model)
+        public ActionResult AtualizarLancamentoFinanceiro([FromBody] LancamentoFinanceiroApiUpdateModel model)
         {
             try
             {
                 _lancamentoServices.AtualizarLancamento(_mapper.Map<LancamentoFinanceiroApiUpdateModel, LancamentoFinanceiro>(model));
+
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return Result(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
@@ -55,28 +59,29 @@ namespace FluxoCaixa.API.Controllers
             {
                 var listaLancamentos = _lancamentoServices.BuscarLancamentoFinanceiro(model.DataLancamento, model.TipoLancamento, model.Consolidado);
 
-                if (listaLancamentos.Any())
+                if (!listaLancamentos.Any())
                     return NotFound();
 
                 return Ok(listaLancamentos);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return new StatusCodeResult((int)HttpStatusCode.InternalServerError);
+                return Result(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
             try
             {
                 _lancamentoServices.ExcluirLancamentoFinanceiro(id);
-            }
-            catch (Exception)
-            {
 
-                throw;
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Result(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
     }
