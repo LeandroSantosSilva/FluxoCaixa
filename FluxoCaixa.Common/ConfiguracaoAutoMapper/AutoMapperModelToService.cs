@@ -1,8 +1,5 @@
 ﻿using FluxoCaixa.Common.Models;
 using FluxoCaixa.Dominio.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FluxoCaixa.Common.ConfiguracaoAutoMapper
 {
@@ -12,6 +9,9 @@ namespace FluxoCaixa.Common.ConfiguracaoAutoMapper
         {
             CreateMap<LancamentoFinanceiroApiModel, LancamentoFinanceiro>()
                 .ForPath(_ => _.TipoLancamento.Id, opt => opt.MapFrom(src => (int)src.TipoLancamento));
+
+            CreateMap<LancamentoFinanceiroApiUpdateModel, LancamentoFinanceiro>()
+              .ForPath(_ => _.TipoLancamento.Id, opt => opt.MapFrom(src => (int)src.TipoLancamento));
         }
     }
 }
