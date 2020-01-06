@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Services", "Flux
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.IOC", "FluxoCaixa.IOC\FluxoCaixa.IOC.csproj", "{1658C505-6770-4622-8C9C-D0EE8E115AB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoCaixa.Services.Test", "FluxoCaixa.Services.Test\FluxoCaixa.Services.Test.csproj", "{89642690-D5B1-4E16-81DA-F91459C1CB77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Services.Test", "FluxoCaixa.Services.Test\FluxoCaixa.Services.Test.csproj", "{89642690-D5B1-4E16-81DA-F91459C1CB77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoCaixa.Data.Test", "FluxoCaixa.Data.Test\FluxoCaixa.Data.Test.csproj", "{BC4C4441-AC1E-41F6-8685-C898CA1B3A28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Data.Test", "FluxoCaixa.Data.Test\FluxoCaixa.Data.Test.csproj", "{BC4C4441-AC1E-41F6-8685-C898CA1B3A28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoCaixa.API.Test", "FluxoCaixa.API.Test\FluxoCaixa.API.Test.csproj", "{1AE7008E-A129-42AF-ADF2-923D6DB15DC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{BC4C4441-AC1E-41F6-8685-C898CA1B3A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC4C4441-AC1E-41F6-8685-C898CA1B3A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC4C4441-AC1E-41F6-8685-C898CA1B3A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AE7008E-A129-42AF-ADF2-923D6DB15DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE7008E-A129-42AF-ADF2-923D6DB15DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE7008E-A129-42AF-ADF2-923D6DB15DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE7008E-A129-42AF-ADF2-923D6DB15DC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

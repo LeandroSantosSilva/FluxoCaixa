@@ -58,8 +58,6 @@ namespace FluxoCaixa.Services.Test
 
             _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoConsolidado(It.IsAny<int>())).Returns(true);
 
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
-
             //action
             _lancamentoServices.AtualizarLancamento(_lancamentoFinanceiro);
         }
@@ -73,8 +71,6 @@ namespace FluxoCaixa.Services.Test
             _lancamentoFinanceiro.TipoLancamento = new TipoLancamento() { Id = 1 };
 
             _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoExiste(It.IsAny<int>())).Returns(false);
-
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
 
             //action
             _lancamentoServices.AtualizarLancamento(_lancamentoFinanceiro);
@@ -90,8 +86,6 @@ namespace FluxoCaixa.Services.Test
 
             _lancamentoRepositorioMock.Setup(_ => _.ExisteTipoLancamento(It.IsAny<int>())).Returns(false);
 
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
-
             //action
             _lancamentoServices.AtualizarLancamento(_lancamentoFinanceiro);
         }
@@ -105,8 +99,6 @@ namespace FluxoCaixa.Services.Test
 
             _lancamentoRepositorioMock.Setup(_ => _.ExisteTipoLancamento(It.IsAny<int>())).Returns(true);
             _lancamentoRepositorioMock.Setup(_ => _.Atualizar(It.IsAny<LancamentoFinanceiro>()));
-
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
 
             //action
             _lancamentoServices.AtualizarLancamento(_lancamentoFinanceiro);
@@ -123,8 +115,6 @@ namespace FluxoCaixa.Services.Test
 
             _lancamentoRepositorioMock.Setup(_ => _.Buscar(It.IsAny<DateTime?>(), It.IsAny<int?>(), It.IsAny<bool?>())).Returns(listaRetorno.ToList());
 
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
-
             //action
             var lancamentos = _lancamentoServices.BuscarLancamentoFinanceiro(null, null, null);
 
@@ -139,7 +129,6 @@ namespace FluxoCaixa.Services.Test
         {
             //prepare
             _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoExiste(It.IsAny<long>())).Returns(false);
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
 
             //action
             _lancamentoServices.ExcluirLancamentoFinanceiro(1);
@@ -151,7 +140,6 @@ namespace FluxoCaixa.Services.Test
         {
             //prepare
             _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoConsolidado(It.IsAny<long>())).Returns(true);
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
 
             //action
             _lancamentoServices.ExcluirLancamentoFinanceiro(1);
@@ -162,7 +150,8 @@ namespace FluxoCaixa.Services.Test
         {
             //prepare
             _lancamentoRepositorioMock.Setup(_ => _.Excluir(It.IsAny<int>()));
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
+            _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoExiste(It.IsAny<long>())).Returns(true);
+            _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoConsolidado(It.IsAny<long>())).Returns(false);
 
             //action
             _lancamentoServices.ExcluirLancamentoFinanceiro(1);
@@ -201,8 +190,6 @@ namespace FluxoCaixa.Services.Test
             _lancamentoFinanceiro.TipoLancamento = new TipoLancamento() { Id = 1 };
 
             _lancamentoRepositorioMock.Setup(_ => _.ExisteTipoLancamento(It.IsAny<int>())).Returns(false);
-
-            _lancamentoServices = new LancamentoServices(_lancamentoRepositorioMock.Object);
 
             //action
             _lancamentoServices.InserirLancamento(_lancamentoFinanceiro);

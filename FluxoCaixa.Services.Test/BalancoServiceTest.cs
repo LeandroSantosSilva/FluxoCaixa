@@ -25,7 +25,7 @@ namespace FluxoCaixa.Services.Test
             _balancoRepositorio.Setup(_ => _.GerarBalancoDiario());
 
             //action
-            _balancoServices.GerarBalanco();
+            _balancoServices.GerarBalancoDiario();
         }
     }
 }
