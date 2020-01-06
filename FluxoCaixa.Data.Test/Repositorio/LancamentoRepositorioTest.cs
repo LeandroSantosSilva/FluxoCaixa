@@ -28,7 +28,7 @@ namespace FluxoCaixa.Data.Test
         {
             var mockDbSet = new Mock<DbSet<LancamentoFinanceiro>>();
 
-            var _fluxoCaixaContext = new Mock<FluxoCaixaContext>();
+            _fluxoCaixaContext = new Mock<FluxoCaixaContext>();
             _fluxoCaixaContext.Setup(m => m.LancamentosFinanceiro).Returns(mockDbSet.Object);
 
             _lancamentoRepositorio = new LancamentoRepositorio(_fluxoCaixaContext.Object);

@@ -31,7 +31,7 @@ namespace FluxoCaixa.Data.Repositorio
         {
             return _fluxoCaixaContext.LancamentosFinanceiro
                         .Where(_ =>
-                                (dataLancamento == null || _.DataHoraLancamento == dataLancamento) &&
+                                (dataLancamento == null || _.DataHoraLancamento.Date == dataLancamento) &&
                                 (tipoLancamento == null || _.TipoLancamento.Id == tipoLancamento) &&
                                 (consolidado == null || _.Consolidado == consolidado)
                              ).ToList();

@@ -10,9 +10,10 @@ namespace FluxoCaixa.Data
         { 
         }
 
-        public virtual DbSet<LancamentoFinanceiro> LancamentosFinanceiro { get; set; }
+        public DbSet<LancamentoFinanceiro> LancamentosFinanceiro { get; set; }
         public DbSet<TipoLancamento> TiposLancamento { get; set; }
-        
+        public DbSet<BalancoDia> BalancoDia { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new TipoLancamentoConfiguration());

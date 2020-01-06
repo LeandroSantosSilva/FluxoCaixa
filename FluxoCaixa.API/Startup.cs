@@ -40,6 +40,8 @@ namespace FluxoCaixa.API
 
             services.AddScoped<ILancamentoServices, LancamentoServices>();
             services.AddScoped<ILancamentoRepositorio, LancamentoRepositorio>();
+            services.AddScoped<IBalancoServices, BalancoServices>();
+            services.AddScoped<IBalancoRepositorio, BalancoRepositorio>();
             services.AddSingleton(sp => MapperConfiguration.CreateMapper());
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

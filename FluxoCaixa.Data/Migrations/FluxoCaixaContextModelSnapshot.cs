@@ -21,7 +21,9 @@ namespace FluxoCaixa.Data.Migrations
 
             modelBuilder.Entity("FluxoCaixa.Dominio.Entidades.BalancoDia", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Data");
 

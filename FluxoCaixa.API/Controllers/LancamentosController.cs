@@ -11,7 +11,7 @@ namespace FluxoCaixa.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LancamentosController : FluxcoCaixaControllerBase
+    public class LancamentosController : FluxoCaixaControllerBase
     {
         private readonly ILancamentoServices _lancamentoServices;
         private readonly IMapper _mapper;
