@@ -1,0 +1,45 @@
+﻿@model List<FluxoCaixa.Common.Models.BalancoMensalModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Balanco", FormMethod.Post))
+{
+    <div class="row">
+        <h3>Gerar balanço diário</h3>
+        <div>
+            <input type="submit" name="Gerar balanço diário" class="btn btn-default" value="Gerar" />
+        </div>
+    </div>
+    <div class="row">
+        <h3>Balanço mensal</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Ano</th>
+                    <th scope="col">Mês</th>
+                    <th scope="col">Crédito</th>
+                    <th scope="col">Débito</th>
+                    <th scope="col">Saldo</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var balanco in Model)
+                {
+
+                    <tr>
+                        <td scope="row">@balanco.Ano</td>
+                        <td scope="row">@balanco.DescricaoMes</td>
+                        <td scope="row">@balanco.SomaCredito.ToString("N2")</td>
+                        <td scope="row">@balanco.SomaDebito.ToString("N2")</td>
+                        <td scope="row">@balanco.SomaSaldo.ToString("N2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+}

@@ -5,6 +5,7 @@ using FluxoCaixa.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace FluxoCaixa.Data.Repositorio
@@ -34,10 +35,11 @@ namespace FluxoCaixa.Data.Repositorio
                 {
                     Ano = ano.Value.Year,
                     Mes = mes.Key,
+                    DescricaoMes = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(mes.Key),
                     SomaCredito = mes.Sum(_ => _.ValorCredito),
                     SomaDebito = mes.Sum(_ => _.ValorDebito),
                     SomaSaldo = mes.Sum(_ => _.Saldo)
-                });
+                }); ;
             }
 
             return balancoMensal;

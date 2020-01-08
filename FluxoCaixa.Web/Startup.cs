@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using FluxoCaixa.ClientServices.ClientServices;
+using FluxoCaixa.ClientServices.Interfaces;
+using FluxoCaixa.Common.Configuracao;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +35,17 @@ namespace FluxoCaixa.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddOptions();
+
+            services.Configure<CustomConfiguration>(Configuration.GetSection("CustomConfiguration"));
+
+            services.AddScoped<IBalancoMensalClientService, BalancoMensalClientServices>();
+
+            HttpClient httpClient = new HttpClient() { };
+
+            //ServicePointManager.FindServicePoint(endPointA).ConnectionLeaseTimeout = 60000; // sixty seconds
+
+            services.AddSingleton<HttpClient>(httpClient);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -44,7 +59,7 @@ namespace FluxoCaixa.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error/Error");
                 app.UseHsts();
             }
 
@@ -56,7 +71,7 @@ namespace FluxoCaixa.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=FluxoCaixa}/{action=Index}/{id?}");
             });
         }
     }
