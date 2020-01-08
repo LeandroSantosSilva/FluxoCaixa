@@ -1,6 +1,10 @@
-﻿using FluxoCaixa.Data.Interface;
+﻿using FizzWare.NBuilder;
+using FluxoCaixa.Data.Interface;
+using FluxoCaixa.Dominio.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
+using System.Linq;
 
 namespace FluxoCaixa.Services.Test
 {
@@ -26,6 +30,20 @@ namespace FluxoCaixa.Services.Test
 
             //action
             _balancoServices.GerarBalancoDiario();
+        }
+
+        [TestMethod]
+        public void Service_Balanco_Gerar_Balanco_Mensal_Sucesso()
+        {
+            //prepare
+            var listaRetorno = Builder<BalancoMensal>.CreateListOfSize(10).Build().ToList();
+
+            _balancoRepositorio.Setup(_ => _.BuscarBalancoMensal(It.IsAny<DateTime?>(), It.IsAny<DateTime?>())).Returns(listaRetorno);
+
+            //action
+            var balancoMensalLista = _balancoServices.BuscarBalancoMensal(null, null);
+
+            Assert.AreEqual(balancoMensalLista, listaRetorno);
         }
     }
 }

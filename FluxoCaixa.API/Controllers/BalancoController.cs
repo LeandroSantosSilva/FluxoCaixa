@@ -1,6 +1,7 @@
 ﻿using FluxoCaixa.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace FluxoCaixa.API.Controllers
 {
@@ -24,6 +25,25 @@ namespace FluxoCaixa.API.Controllers
                 _balancoServices.GerarBalancoDiario();
 
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Result(System.Net.HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetBalancoMensal")]
+        public ActionResult GetBalancoMensal([FromQuery] DateTime? ano, DateTime? mesParametro)
+        {
+            try
+            {
+                var retornoBalancoMensal = _balancoServices.BuscarBalancoMensal(ano, mesParametro);
+
+                if (!retornoBalancoMensal.Any())
+                    return NotFound();
+
+                return Ok(retornoBalancoMensal);
             }
             catch (Exception ex)
             {

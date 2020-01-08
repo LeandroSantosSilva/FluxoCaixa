@@ -27,7 +27,7 @@ namespace FluxoCaixa.API.Controllers
         {
             try
             {
-                _lancamentoServices.InserirLancamento(_mapper.Map<LancamentoFinanceiroApiModel, LancamentoFinanceiro>(model));
+               _lancamentoServices.InserirLancamento(_mapper.Map<LancamentoFinanceiroApiModel, LancamentoFinanceiro>(model));
                 
                 return Ok();
             }

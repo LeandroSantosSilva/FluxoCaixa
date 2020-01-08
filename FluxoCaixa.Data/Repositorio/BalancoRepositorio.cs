@@ -1,8 +1,10 @@
 ﻿using FluxoCaixa.Common.Enum;
 using FluxoCaixa.Data.Interface;
+using FluxoCaixa.Dominio.DTO;
 using FluxoCaixa.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FluxoCaixa.Data.Repositorio
@@ -13,6 +15,32 @@ namespace FluxoCaixa.Data.Repositorio
         public BalancoRepositorio(FluxoCaixaContext fluxoCaixaContext)
         {
             _fluxoCaixaContext = fluxoCaixaContext;
+        }
+
+        public List<BalancoMensal> BuscarBalancoMensal(DateTime? ano, DateTime? mesParametro)
+        {
+            if (ano == null)
+                ano = DateTime.Now;
+
+            var listaBalancoAgrupadoPorMes = _fluxoCaixaContext.BalancoDia
+                    .Where(_ => _.Data.Year == ano.Value.Year && (mesParametro == null || _.Data.Month == ano.Value.Month) )
+                    .GroupBy(_ => _.Data.Month).ToList();
+
+            var balancoMensal = new List<BalancoMensal>();
+
+            foreach (var mes in listaBalancoAgrupadoPorMes)
+            {
+                balancoMensal.Add(new BalancoMensal()
+                {
+                    Ano = ano.Value.Year, 
+                    Mes = mes.Key,
+                    SomaCredito = mes.Sum(_ => _.ValorCredito),
+                    SomaDebito = mes.Sum(_ => _.ValorDebito),
+                    SomaSaldo = mes.Sum(_ => _.Saldo)
+                });
+            }
+
+            return balancoMensal;
         }
 
         public void GerarBalancoDiario()
