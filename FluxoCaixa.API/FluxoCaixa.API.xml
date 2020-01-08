@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FluxoCaixa.API</name>
+    </assembly>
+    <members>
+        <member name="M:FluxoCaixa.API.Controllers.BalancoController.GerarBalancoDiario">
+            <summary>
+            Gera o balanço por dia de tudo que está pendendo de consolidação
+            </summary>
+            <returns>StatusCode 200 caso consigar gerar o balanço sem erro e 500 caso dê algum erro</returns>
+        </member>
+        <member name="M:FluxoCaixa.API.Controllers.BalancoController.GetBalancoMensal(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Busca o balanço por mês de todos os registros que já foram consolidados
+            </summary>
+            <param name="ano">Ano para recuperar o balanço, se informar nulo retornará o ano atual</param>
+            <param name="mesParametro">Mês retorna somente o do mês especificado</param>
+            <returns>StatusCode 200 caso consiga recuperar os registros, 404 caso não encontre nenhum registro e 500 caso dê algum erro</returns>
+        </member>
+        <member name="M:FluxoCaixa.API.Controllers.LancamentosController.InserirLancamentoFinanceiro(FluxoCaixa.Common.Models.LancamentoFinanceiroApiModel)">
+            <summary>
+            Insere um lançamento financeiro
+            </summary>
+            <param name="model">Parametro que será utilizado para informar o valor e o tipo lançamento</param>
+            <returns>StatusCode 200 caso consiga inserir com sucesso e 500 caso dê algum erro</returns>
+        </member>
+        <member name="M:FluxoCaixa.API.Controllers.LancamentosController.AtualizarLancamentoFinanceiro(FluxoCaixa.Common.Models.LancamentoFinanceiroApiUpdateModel)">
+            <summary>
+            Atualiza um lançamento financeiro
+            Após atualização o registro é marcado para ser consolidado novamente
+            </summary>
+            <param name="model">Parametro que será utilizado para informar o valor e o tipo lançamento</param>
+            <returns>StatusCode 200 se não deu erro ao atualizar e 500 caso dê algum erro</returns>
+        </member>
+        <member name="M:FluxoCaixa.API.Controllers.LancamentosController.FiltrarLancamentoFinanceiro(FluxoCaixa.Common.Models.LancamentoFinanceiroFiltro)">
+            <summary>
+            Busca os lançamentos financeiros cadastrados
+            </summary>
+            <param name="model">Parametro que será utilizado para informar a data,tipo lançamento e consolidado</param>
+            <returns>StatusCode 200 se não deu erro e a lista com os resultados, 404 caso não encontre nenhum registro e 500 caso dê algum erro</returns>
+        </member>
+        <member name="M:FluxoCaixa.API.Controllers.LancamentosController.Delete(System.Int32)">
+            <summary>
+            Excluir um lançamento financeiro
+            Caso o lançamento já esteja consolidado será retornado um mensagem que não é permitido excluir o lançamento
+            </summary>
+            <param name="id">Id do lançamento financeiro salvo na base de dados</param>
+            <returns>StatusCode 200 se conseguiu excluir e 500 caso dê algum erro</returns>
+        </member>
+        <member name="M:FluxoCaixa.API.Startup.RunSeeds(System.String,Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Método responsável por popular e rodar os migrations iniciais, podendo ser configurado por ambiente
+            </summary>
+            <param name="env"></param>
+            <param name="app"></param>
+        </member>
+    </members>
+</doc>

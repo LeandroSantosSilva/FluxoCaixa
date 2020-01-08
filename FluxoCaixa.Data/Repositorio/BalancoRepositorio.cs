@@ -23,7 +23,7 @@ namespace FluxoCaixa.Data.Repositorio
                 ano = DateTime.Now;
 
             var listaBalancoAgrupadoPorMes = _fluxoCaixaContext.BalancoDia
-                    .Where(_ => _.Data.Year == ano.Value.Year && (mesParametro == null || _.Data.Month == ano.Value.Month) )
+                    .Where(_ => _.Data.Year == ano.Value.Year && (mesParametro == null || _.Data.Month == ano.Value.Month))
                     .GroupBy(_ => _.Data.Month).ToList();
 
             var balancoMensal = new List<BalancoMensal>();
@@ -32,7 +32,7 @@ namespace FluxoCaixa.Data.Repositorio
             {
                 balancoMensal.Add(new BalancoMensal()
                 {
-                    Ano = ano.Value.Year, 
+                    Ano = ano.Value.Year,
                     Mes = mes.Key,
                     SomaCredito = mes.Sum(_ => _.ValorCredito),
                     SomaDebito = mes.Sum(_ => _.ValorDebito),
@@ -79,9 +79,6 @@ namespace FluxoCaixa.Data.Repositorio
             _fluxoCaixaContext.SaveChanges();
         }
 
-        private BalancoDia BuscarBalancoDia(DateTime dataLancamento)
-        {
-            return _fluxoCaixaContext.BalancoDia.FirstOrDefault(_ => _.Data.Date == dataLancamento);
-        }
+        private BalancoDia BuscarBalancoDia(DateTime dataLancamento) => _fluxoCaixaContext.BalancoDia.FirstOrDefault(_ => _.Data.Date == dataLancamento);
     }
 }

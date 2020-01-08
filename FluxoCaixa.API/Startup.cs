@@ -12,6 +12,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.IO;
 
 namespace FluxoCaixa.API
 {
@@ -46,6 +50,27 @@ namespace FluxoCaixa.API
             services.AddSingleton(sp => MapperConfiguration.CreateMapper());
             services.AddScoped<Seed, SeedProducao>();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new Info
+                    {
+                        Title = "Fluxo de Caixa",
+                        Version = "v1",
+                        Description = "Endpoint para consumo do fluxo de caixa",
+                        Contact = new Contact
+                        {
+                            Name = "Leandro Silva",
+                            Url = "https://github.com/LeandroSantosSilva"
+                        }
+                    });
+
+                string caminhoAplicacao = PlatformServices.Default.Application.ApplicationBasePath;
+                string nomeAplicacao = PlatformServices.Default.Application.ApplicationName;
+                string caminhoXmlDoc = Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
+                c.IncludeXmlComments(caminhoXmlDoc);
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -58,8 +83,18 @@ namespace FluxoCaixa.API
             }
 
             RunSeeds(env.EnvironmentName, app);
+            RunSwagger(app);
 
             app.UseMvc();
+        }
+
+        private void RunSwagger(IApplicationBuilder app)
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fluxo de Caixa");
+            });
         }
 
         /// <summary>
@@ -72,7 +107,7 @@ namespace FluxoCaixa.API
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var seed = serviceScope.ServiceProvider.GetService<Seed>();
-               
+
                 switch (env)
                 {
                     case "Development":
@@ -84,5 +119,6 @@ namespace FluxoCaixa.API
                 }
             }
         }
+
     }
 }
