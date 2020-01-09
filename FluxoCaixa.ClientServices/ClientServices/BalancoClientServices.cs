@@ -23,12 +23,19 @@ namespace FluxoCaixa.ClientServices.ClientServices
 
         public void GerarBalancoDiario()
         {
-            var encodedContent = new FormUrlEncodedContent(new Dictionary<string, string> { });
-
-            using (var response = _httpClient.PostAsync(ClientServiceHelpers.ConfigurarUrl(_customConfiguration, Servicos.SERVICO_BALANCO_DIARO), encodedContent))
+            try
             {
-                response.Result.Content.ReadAsStringAsync();
+                var encodedContent = new FormUrlEncodedContent(new Dictionary<string, string> { });
 
+                using (var response = _httpClient.PostAsync(ClientServiceHelpers.ConfigurarUrl(_customConfiguration, Servicos.SERVICO_BALANCO_DIARO), new StringContent("")))
+                {
+                    response.Result.Content.ReadAsStringAsync();
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 

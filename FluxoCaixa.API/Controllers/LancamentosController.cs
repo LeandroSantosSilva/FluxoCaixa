@@ -76,7 +76,7 @@ namespace FluxoCaixa.API.Controllers
                 var listaLancamentos = _lancamentoServices.BuscarLancamentoFinanceiro(model.DataLancamento, model.TipoLancamento, model.Consolidado);
 
                 if (!listaLancamentos.Any())
-                    return NotFound();
+                    return NoContent();
 
                 return Ok(listaLancamentos);
             }

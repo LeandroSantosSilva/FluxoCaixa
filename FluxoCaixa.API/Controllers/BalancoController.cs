@@ -52,7 +52,7 @@ namespace FluxoCaixa.API.Controllers
                 var retornoBalancoMensal = _balancoServices.BuscarBalancoMensal(ano, mesParametro);
 
                 if (!retornoBalancoMensal.Any())
-                    return NotFound();
+                    return NoContent();
 
                 return Ok(retornoBalancoMensal);
             }
