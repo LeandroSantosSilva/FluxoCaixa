@@ -6,9 +6,10 @@ namespace FluxoCaixa.ClientServices.Interfaces
 {
     public interface ILancamentoFinanceiroClientServices
     {
-        IEnumerable<LancamentoFinanceiro> FiltrarLancamentosFinanceiro(LancamentoFinanceiroFiltro filtro);
+        IEnumerable<LancamentoFinanceiroModel> FiltrarLancamentosFinanceiro(LancamentoFinanceiroFiltro filtro);
         void AtualizarLancamentoFinanceiro(LancamentoFinanceiroApiUpdateModel model);
         void InserirLancamentoFinaneiro(LancamentoFinanceiroApiModel model);
         void ExcluirLancamentoFinanceiro(int id);
+        LancamentoFinanceiroModel GetLancamentoFinanceiro(int id);
     }
 }

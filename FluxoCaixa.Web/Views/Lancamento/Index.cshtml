@@ -1,8 +1,67 @@
-﻿
+﻿@model FluxoCaixa.Common.Models.ViewModel.LancamentoFinanceiroFiltroViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <h3>Lançamentos</h3>
+    <div>
+        <a asp-action="Cadastrar" asp-controller="Lancamento" class="btn btn-default">Cadastrar</a>
+    </div>
+</div>
+<div class="row">
+    @if (Model.ListaLancamentoFinanceiro.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th scope="col">Data Lançamento</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Tipo Lançamento</th>
+                    <th scope="col">Consolidado?</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var lancamento in Model.ListaLancamentoFinanceiro)
+                {
+                    <tr>
+                        <td scope="row">@Html.ActionLink("Editar", "Editar", "Lancamento", new { id = lancamento.Id })</td>
+                        <td scope="row"><a href="#" onclick="ExcluirLancamento('@lancamento.Id')">Excluir</a></td>
+                        <td scope="row">@lancamento.DataHoraLancamento</td>
+                        <td scope="row">@lancamento.Valor</td>
+                        <td scope="row">@lancamento.TipoLancamento</td>
+                        <td scope="row">@lancamento.Consolidado</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
 
+@section Scripts {
+
+    <script type="text/javascript">
+
+        function ExcluirLancamento(idLancamento) {
+
+            $.ajax({
+                url: "Lancamento/Excluir",
+                data: { id: idLancamento },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    alert(data.mensagem);
+
+                    window.location.href = "Lancamento";
+
+                }, error: function (error) {
+
+                }
+            });
+        }
+
+    </script>
+}

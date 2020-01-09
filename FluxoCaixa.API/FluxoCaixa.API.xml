@@ -48,6 +48,13 @@
             <param name="id">Id do lançamento financeiro salvo na base de dados</param>
             <returns>StatusCode 200 se conseguiu excluir e 500 caso dê algum erro</returns>
         </member>
+        <member name="M:FluxoCaixa.API.Controllers.LancamentosController.BuscarLancamentoFinanceiroPorId(System.Int32)">
+            <summary>
+            Busca o lançamento por id
+            </summary>
+            <param name="id">id do lançamento salvo no banco de dados</param>
+            <returns>retorna um lançamento financeiro</returns>
+        </member>
         <member name="M:FluxoCaixa.API.Startup.RunSeeds(System.String,Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             Método responsável por popular e rodar os migrations iniciais, podendo ser configurado por ambiente

@@ -128,7 +128,7 @@ namespace FluxoCaixa.Services.Test
         public void Service_Excluir_Lancamento_Nao_Existe_Lancamento()
         {
             //prepare
-            _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoExiste(It.IsAny<long>())).Returns(false);
+            _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoExiste(It.IsAny<long>())).Returns(true);
 
             //action
             _lancamentoServices.ExcluirLancamentoFinanceiro(1);
@@ -150,7 +150,7 @@ namespace FluxoCaixa.Services.Test
         {
             //prepare
             _lancamentoRepositorioMock.Setup(_ => _.Excluir(It.IsAny<int>()));
-            _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoExiste(It.IsAny<long>())).Returns(true);
+            _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoExiste(It.IsAny<long>())).Returns(false);
             _lancamentoRepositorioMock.Setup(_ => _.ValidarLancamentoConsolidado(It.IsAny<long>())).Returns(false);
 
             //action
@@ -193,6 +193,22 @@ namespace FluxoCaixa.Services.Test
 
             //action
             _lancamentoServices.InserirLancamento(_lancamentoFinanceiro);
+        }
+
+        [TestMethod]
+        public void Service_Buscar_Lancamento_Por_Id_Sucesso()
+        {
+            //prepare
+            var lancamento = Builder<LancamentoFinanceiro>.CreateNew().Build();
+
+            _lancamentoRepositorioMock.Setup(_ => _.BuscarPorId(It.IsAny<int>())).Returns(lancamento);
+
+            //action
+            var lancamentos = _lancamentoServices.BuscarLancamentoFinanceiroPorId(1);
+
+            //assert
+            _lancamentoRepositorioMock.Verify();
+            Assert.IsNotNull(lancamentos);
         }
     }
 }

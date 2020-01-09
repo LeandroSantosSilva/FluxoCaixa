@@ -13,5 +13,6 @@ namespace FluxoCaixa.Data.Interface
         void Excluir(int id);
         bool ValidarLancamentoExiste(long id);
         bool ValidarLancamentoConsolidado(long id);
+        LancamentoFinanceiro BuscarPorId(int id);
     }
 }

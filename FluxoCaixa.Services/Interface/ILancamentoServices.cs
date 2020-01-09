@@ -9,6 +9,7 @@ namespace FluxoCaixa.Services.Interface
         void InserirLancamento(LancamentoFinanceiro lancamentoFinanceiro);
         void AtualizarLancamento(LancamentoFinanceiro lancamentoFinanceiro);
         List<LancamentoFinanceiro> BuscarLancamentoFinanceiro(DateTime? dataLancamento, int? tipoLancamento, bool? consolidado);
+        LancamentoFinanceiro BuscarLancamentoFinanceiroPorId(int id);
         void ExcluirLancamentoFinanceiro(int id);
     }
 }

@@ -1,6 +1,8 @@
-﻿using FluxoCaixa.ClientServices.ClientServices;
+﻿using AutoMapper;
+using FluxoCaixa.ClientServices.ClientServices;
 using FluxoCaixa.ClientServices.Interfaces;
 using FluxoCaixa.Common.Configuracao;
+using FluxoCaixa.Common.ConfiguracaoAutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +21,7 @@ namespace FluxoCaixa.Web
         }
 
         public IConfiguration Configuration { get; }
+        private MapperConfiguration MapperConfiguration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,11 +33,20 @@ namespace FluxoCaixa.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            MapperConfiguration = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new AutoMapperModelToService());
+                cfg.AddProfile(new AutoMapperServiceToModel());
+            });
+            services.AddSingleton(sp => MapperConfiguration.CreateMapper());
+
+
             services.AddOptions();
 
             services.Configure<CustomConfiguration>(Configuration.GetSection("CustomConfiguration"));
 
             services.AddScoped<IBalancoClientService, BalancoClientServices>();
+            services.AddScoped<ILancamentoFinanceiroClientServices, LancamentoFinanceiroClientService>();
 
             HttpClient httpClient = new HttpClient() { };
 

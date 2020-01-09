@@ -138,5 +138,48 @@ namespace FluxoCaixa.API.Test
             //assert
             Assert.IsTrue(((ContentResult)retorno).StatusCode == (int)HttpStatusCode.InternalServerError);
         }
+
+        [TestMethod]
+        public void API_Controller_Lancamentos_BuscarLancamentoFinanceiroPorID_Sucesso()
+        {
+            //prepare
+            var lancamento = Builder<LancamentoFinanceiro>.CreateNew().Build();
+
+            _lancamentosServicesMock.Setup(_ => _.BuscarLancamentoFinanceiroPorId(It.IsAny<int>())).Returns(lancamento);
+
+            //action
+            var retorno = _lancamentosController.BuscarLancamentoFinanceiroPorId(1);
+
+            //assert
+            Assert.IsTrue(((ObjectResult)retorno).StatusCode == (int)HttpStatusCode.OK);
+        }
+
+        [TestMethod]
+        public void API_Controller_Lancamentos_BuscarLancamentoFinanceiroPorID_Nao_Encontrado()
+        {
+            //prepare
+            LancamentoFinanceiro lancamento = null;
+
+            _lancamentosServicesMock.Setup(_ => _.BuscarLancamentoFinanceiroPorId(It.IsAny<int>())).Returns(lancamento);
+
+            //action
+            var retorno = _lancamentosController.BuscarLancamentoFinanceiroPorId(1);
+
+            //assert
+            Assert.IsTrue(((StatusCodeResult)retorno).StatusCode == (int)HttpStatusCode.NotFound);
+        }
+
+        [TestMethod]
+        public void API_Controller_Lancamentos_BuscarLancamentoFinanceiroPorID_Erro()
+        {
+            //prepare
+            _lancamentosServicesMock.Setup(_ => _.BuscarLancamentoFinanceiroPorId(It.IsAny<int>())).Throws(new Exception("Ocorreu um erro ao buscar lancamento"));
+
+            //action
+            var retorno = _lancamentosController.BuscarLancamentoFinanceiroPorId(1);
+
+            //assert
+            Assert.IsTrue(((ContentResult)retorno).StatusCode == (int)HttpStatusCode.InternalServerError);
+        }
     }
 }

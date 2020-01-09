@@ -1,6 +1,10 @@
 # FluxoCaixa
-Criar a base de dados FluxoCaixaDB
+Para montar ambiente
 
-dotnet ef migrations add InitialMigration -s C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API
+ - Criar a base de dados com o nome FluxoCaixaDB
 
-dotnet ef database update -s C:\Users\Leandro\source\repos\FluxoCaixa\FluxoCaixa.API
+ - Iniciar o website - FluxoCaixa.Web
+ 
+  - Iniciar uma nova instância do api - FluxoCaixa.API
+
+  Obs: os migrations e tabela de dominio será populada no start da aplicação.

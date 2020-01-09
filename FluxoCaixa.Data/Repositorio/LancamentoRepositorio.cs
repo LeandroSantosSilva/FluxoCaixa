@@ -1,5 +1,6 @@
 ﻿using FluxoCaixa.Data.Interface;
 using FluxoCaixa.Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace FluxoCaixa.Data.Repositorio
 
         public List<LancamentoFinanceiro> Buscar(DateTime? dataLancamento, int? tipoLancamento, bool? consolidado)
         {
-            return _fluxoCaixaContext.LancamentosFinanceiro
+            return _fluxoCaixaContext.LancamentosFinanceiro.Include(_ => _.TipoLancamento)
                         .Where(_ =>
                                 (dataLancamento == null || _.DataHoraLancamento.Date == dataLancamento) &&
                                 (tipoLancamento == null || _.TipoLancamento.Id == tipoLancamento) &&
@@ -65,5 +66,7 @@ namespace FluxoCaixa.Data.Repositorio
         public bool ValidarLancamentoConsolidado(long id) =>
             _fluxoCaixaContext.LancamentosFinanceiro.FirstOrDefault(_ => _.Id == id).Consolidado;
 
+        public LancamentoFinanceiro BuscarPorId(int id) => _fluxoCaixaContext.LancamentosFinanceiro.Include(_ => _.TipoLancamento).FirstOrDefault(_ => _.Id == id);
+        
     }
 }

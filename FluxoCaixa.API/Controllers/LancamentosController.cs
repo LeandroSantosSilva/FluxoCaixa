@@ -4,6 +4,7 @@ using FluxoCaixa.Dominio.Entidades;
 using FluxoCaixa.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
@@ -69,6 +70,7 @@ namespace FluxoCaixa.API.Controllers
         /// <param name="model">Parametro que será utilizado para informar a data,tipo lançamento e consolidado</param>
         /// <returns>StatusCode 200 se não deu erro e a lista com os resultados, 404 caso não encontre nenhum registro e 500 caso dê algum erro</returns>
         [HttpGet]
+        [Route("FiltraLista")]
         public ActionResult FiltrarLancamentoFinanceiro([FromQuery] LancamentoFinanceiroFiltro model)
         {
             try
@@ -78,7 +80,7 @@ namespace FluxoCaixa.API.Controllers
                 if (!listaLancamentos.Any())
                     return NoContent();
 
-                return Ok(listaLancamentos);
+                return Ok(_mapper.Map<List<LancamentoFinanceiro>, List<LancamentoFinanceiroModel>>(listaLancamentos));
             }
             catch (Exception ex)
             {
@@ -100,6 +102,29 @@ namespace FluxoCaixa.API.Controllers
                 _lancamentoServices.ExcluirLancamentoFinanceiro(id);
 
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Result(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Busca o lançamento por id
+        /// </summary>
+        /// <param name="id">id do lançamento salvo no banco de dados</param>
+        /// <returns>retorna um lançamento financeiro</returns>
+        [HttpGet("{id}")]
+        public ActionResult BuscarLancamentoFinanceiroPorId(int id)
+        {
+            try
+            {
+                var lancamento = _lancamentoServices.BuscarLancamentoFinanceiroPorId(id);
+
+                if (lancamento == null)
+                    return NotFound();
+
+                return Ok(_mapper.Map<LancamentoFinanceiro, LancamentoFinanceiroModel>(lancamento));
             }
             catch (Exception ex)
             {

@@ -12587,6 +12587,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "AutoMapper >= 9.0.0",
       "FluxoCaixa.ClientServices >= 1.0.0",
       "FluxoCaixa.Common >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
@@ -12643,6 +12644,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "AutoMapper": {
+            "target": "Package",
+            "version": "[9.0.0, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",

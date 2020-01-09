@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v2.1": {
       "FluxoCaixa.Web/1.0.0": {
         "dependencies": {
+          "AutoMapper": "9.0.0",
           "FluxoCaixa.ClientServices": "1.0.0",
           "FluxoCaixa.Common": "1.0.0",
           "Microsoft.AspNetCore.App": "2.1.1",

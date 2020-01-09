@@ -1,0 +1,25 @@
+﻿@model FluxoCaixa.Common.Models.ViewModel.LancamentoFinanceiroInserirViewModel
+@{
+    ViewData["Title"] = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Cadastrar", "Lancamento", FormMethod.Post))
+{
+    <h2>Cadastrar</h2>
+
+    <div class="row">
+        <div class="form-group">
+            <label for="Valor">Valor</label>
+            @Html.TextBoxFor(_ => _.Valor)
+        </div>
+        <div class="form-group">
+            <label for="TipoLancamento">Tipo Lançamento</label>
+            @Html.RadioButtonFor(model => model.TipoLancamento, true) Crédito
+            @Html.RadioButtonFor(model => model.TipoLancamento, false) Débito
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+        </div>
+    </div>
+}
