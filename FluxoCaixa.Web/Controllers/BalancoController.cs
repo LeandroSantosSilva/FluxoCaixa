@@ -1,36 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using FluxoCaixa.Common.Models;
+﻿using FluxoCaixa.ClientServices.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using FluxoCaixa.ClientServices.Interfaces;
-using Microsoft.Extensions.Options;
-using FluxoCaixa.Common.Configuracao;
 
 namespace FluxoCaixa.Web.Controllers
 {
     public class BalancoController : Controller
     {
-        private readonly IBalancoMensalClientService _balancoMensalClientService;
+        private readonly IBalancoClientService _balancoClientService;
        
-        public BalancoController(IBalancoMensalClientService balancoMensalClientService)
+        public BalancoController(IBalancoClientService balancoClientService)
         {
-            _balancoMensalClientService = balancoMensalClientService;
+            _balancoClientService = balancoClientService;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var balancoMensalLista = _balancoMensalClientService.GetBalancoMensal(null, null);
+            var balancoMensalLista = _balancoClientService.GetBalancoMensal(null, null);
             return View(balancoMensalLista);
         }
 
         [HttpPost]
         public IActionResult Index(bool gerarBalancoDiario = true)
         {
+            _balancoClientService.GerarBalancoDiario();
+
             return RedirectToAction("Index");
         }
     }

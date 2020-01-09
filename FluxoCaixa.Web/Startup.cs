@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using FluxoCaixa.ClientServices.ClientServices;
+﻿using FluxoCaixa.ClientServices.ClientServices;
 using FluxoCaixa.ClientServices.Interfaces;
 using FluxoCaixa.Common.Configuracao;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http;
 
 namespace FluxoCaixa.Web
 {
@@ -39,7 +34,7 @@ namespace FluxoCaixa.Web
 
             services.Configure<CustomConfiguration>(Configuration.GetSection("CustomConfiguration"));
 
-            services.AddScoped<IBalancoMensalClientService, BalancoMensalClientServices>();
+            services.AddScoped<IBalancoClientService, BalancoClientServices>();
 
             HttpClient httpClient = new HttpClient() { };
 

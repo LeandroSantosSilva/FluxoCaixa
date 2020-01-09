@@ -8,18 +8,28 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 
 namespace FluxoCaixa.ClientServices.ClientServices
 {
-    public class BalancoMensalClientServices : IBalancoMensalClientService
+    public class BalancoClientServices : IBalancoClientService
     {
         private readonly HttpClient _httpClient = default;
         private readonly IOptions<CustomConfiguration> _customConfiguration;
-        public BalancoMensalClientServices(HttpClient httpClient, IOptions<CustomConfiguration> customConfiguration)
+        public BalancoClientServices(HttpClient httpClient, IOptions<CustomConfiguration> customConfiguration)
         {
             _httpClient = httpClient;
             _customConfiguration = customConfiguration;
+        }
+
+        public void GerarBalancoDiario()
+        {
+            var encodedContent = new FormUrlEncodedContent(new Dictionary<string, string> { });
+
+            using (var response = _httpClient.PostAsync(ClientServiceHelpers.ConfigurarUrl(_customConfiguration, Servicos.SERVICO_BALANCO_DIARO), encodedContent))
+            {
+                response.Result.Content.ReadAsStringAsync();
+
+            }
         }
 
         public IEnumerable<BalancoMensalModel> GetBalancoMensal(int? ano, int? mes)
